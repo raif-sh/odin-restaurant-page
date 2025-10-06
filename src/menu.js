@@ -1,32 +1,42 @@
-const title = "Our Shawarma Lineup";
-const intro = "Every wrap, bowl, and platter is built fresh — marinated overnight, grilled to perfection, and served with love (and extra garlic sauce, if you know what’s up).";
+export function menuContent() {
+  const content = document.querySelector('#content');
+  content.textContent = ''; // clear existing content
 
-const headerTwo = document.createElement('h2');
-headerTwo.textContent = title;
+  const title = "Our Shawarma Lineup";
+  const intro = "Every wrap, bowl, and platter is built fresh — marinated overnight, grilled to perfection, and served with love (and extra garlic sauce, if you know what’s up).";
 
-const para = document.createElement('p');
-para.textContent = intro;
+  const headerTwo = document.createElement('h2');
+  headerTwo.textContent = title;
 
-const headerThree = document.createElement('h3');
-headerThree.textContent = "Wraps"
+  const para = document.createElement('p');
+  para.textContent = intro;
 
-const headerThreeOne = document.createElement('h4');
-headerThreeOne.textContent = "Classic Chicken Shawarma"
+  const wrapsHeader = document.createElement('h3');
+  wrapsHeader.textContent = "Wraps";
 
-const headerThreeOnePara = document.createElement('p');
-headerThreeOnePara.textContent = "Marinated in our signature spice blend, grilled to juicy perfection, and wrapped with garlic sauce, pickles, and fries."
+  const items = [
+    {
+      name: "Classic Chicken Shawarma",
+      desc: "Marinated in our signature spice blend, grilled to juicy perfection, and wrapped with garlic sauce, pickles, and fries."
+    },
+    {
+      name: "Beef Shawarma",
+      desc: "Tender beef slices with tahini, onions, and tomatoes. Bold, smoky, and unforgettable."
+    },
+    {
+      name: "Falafel Wrap (V)",
+      desc: "Crispy chickpea fritters with hummus, pickled veggies, and a drizzle of tahini."
+    }
+  ];
 
+  const menuSection = document.createElement('div');
+  items.forEach(item => {
+    const h4 = document.createElement('h4');
+    h4.textContent = item.name;
+    const p = document.createElement('p');
+    p.textContent = item.desc;
+    menuSection.append(h4, p);
+  });
 
-
-const menuContent = function() {
-    const content = document.querySelector('#content');
-
-    content.appendChild(headerTwo);
-    content.appendChild(para);
-    content.appendChild(headerThree);
-    content.appendChild(headerThreeOne);
-    content.appendChild(headerThreeOnePara);
-
-}
-
-export { menuContent };
+  content.append(headerTwo, para, wrapsHeader, menuSection);
+};
